@@ -94,22 +94,266 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void convertUnits() {
-        String fromUnit = spinnerFrom.getSelectedItem().toString();
-        String toUnit = spinnerTo.getSelectedItem().toString();
-        double value = Double.parseDouble(editTextValue.getText().toString());
-        double result = 0;
+    String fromUnit = spinnerFrom.getSelectedItem().toString();
+    String toUnit = spinnerTo.getSelectedItem().toString();
+    double value = Double.parseDouble(editTextValue.getText().toString());
+    double result = 0;
 
-        switch (fromUnit) {
-            // 在这里实现不同单位的转换逻辑,例如:
-            case "Inch":
-                if (toUnit.equals("Centimeter")) {
+    switch (fromUnit) {
+        case "Inch":
+            switch (toUnit) {
+                case "Foot":
+                    result = value / 12;
+                    break;
+                case "Yard":
+                    result = value / 36;
+                    break;
+                case "Mile":
+                    result = value / 63360;
+                    break;
+                case "Centimeter":
                     result = value * 2.54;
-                }
-                // 处理其他目标单位...
-                break;
-            // 处理其他源单位...
-        }
-
-        textViewResult.setText(String.format("%.2f", result) + " " + toUnit);
+                    break;
+                case "Kilometer":
+                    result = value / 39370;
+                    break;
+                default:
+                    result = value;
+            }
+            break;
+        case "Foot":
+            switch (toUnit) {
+                case "Inch":
+                    result = value * 12;
+                    break;
+                case "Yard":
+                    result = value / 3;
+                    break;
+                case "Mile":
+                    result = value / 5280;
+                    break;
+                case "Centimeter":
+                    result = value * 30.48;
+                    break;
+                case "Kilometer":
+                    result = value / 3281;
+                    break;
+                default:
+                    result = value;
+            }
+            break;
+        case "Yard":
+            switch (toUnit) {
+                case "Inch":
+                    result = value * 36;
+                    break;
+                case "Foot":
+                    result = value * 3;
+                    break;
+                case "Mile":
+                    result = value / 1760;
+                    break;
+                case "Centimeter":
+                    result = value * 91.44;
+                    break;
+                case "Kilometer":
+                    result = value / 1094;
+                    break;
+                default:
+                    result = value;
+            }
+            break;
+        case "Mile":
+            switch (toUnit) {
+                case "Inch":
+                    result = value * 63360;
+                    break;
+                case "Foot":
+                    result = value * 5280;
+                    break;
+                case "Yard":
+                    result = value * 1760;
+                    break;
+                case "Centimeter":
+                    result = value * 160934;
+                    break;
+                case "Kilometer":
+                    result = value * 1.60934;
+                    break;
+                default:
+                    result = value;
+            }
+            break;
+        case "Centimeter":
+            switch (toUnit) {
+                case "Inch":
+                    result = value / 2.54;
+                    break;
+                case "Foot":
+                    result = value / 30.48;
+                    break;
+                case "Yard":
+                    result = value / 91.44;
+                    break;
+                case "Mile":
+                    result = value / 160934;
+                    break;
+                case "Kilometer":
+                    result = value / 100000;
+                    break;
+                default:
+                    result = value;
+            }
+            break;
+        case "Kilometer":
+            switch (toUnit) {
+                case "Inch":
+                    result = value * 39370;
+                    break;
+                case "Foot":
+                    result = value * 3281;
+                    break;
+                case "Yard":
+                    result = value * 1094;
+                    break;
+                case "Mile":
+                    result = value / 1.60934;
+                    break;
+                case "Centimeter":
+                    result = value * 100000;
+                    break;
+                default:
+                    result = value;
+            }
+            break;
+        case "Pound":
+            switch (toUnit) {
+                case "Ounce":
+                    result = value * 16;
+                    break;
+                case "Ton":
+                    result = value / 2000;
+                    break;
+                case "Kilogram":
+                    result = value / 2.20462;
+                    break;
+                case "Gram":
+                    result = value * 453.592;
+                    break;
+                default:
+                    result = value;
+            }
+            break;
+        case "Ounce":
+            switch (toUnit) {
+                case "Pound":
+                    result = value / 16;
+                    break;
+                case "Ton":
+                    result = value / 32000;
+                    break;
+                case "Kilogram":
+                    result = value / 35.274;
+                    break;
+                case "Gram":
+                    result = value * 28.3495;
+                    break;
+                default:
+                    result = value;
+            }
+            break;
+        case "Ton":
+            switch (toUnit) {
+                case "Pound":
+                    result = value * 2000;
+                    break;
+                case "Ounce":
+                    result = value * 32000;
+                    break;
+                case "Kilogram":
+                    result = value * 907.185;
+                    break;
+                case "Gram":
+                    result = value * 907185;
+                    break;
+                default:
+                    result = value;
+            }
+            break;
+        case "Kilogram":
+            switch (toUnit) {
+                case "Pound":
+                    result = value * 2.20462;
+                    break;
+                case "Ounce":
+                    result = value * 35.274;
+                    break;
+                case "Ton":
+                    result = value / 907.185;
+                    break;
+                case "Gram":
+                    result = value * 1000;
+                    break;
+                default:
+                    result = value;
+            }
+            break;
+        case "Gram":
+            switch (toUnit) {
+                case "Pound":
+                    result = value / 453.592;
+                    break;
+                case "Ounce":
+                    result = value / 28.3495;
+                    break;
+                case "Ton":
+                    result = value / 907185;
+                    break;
+                case "Kilogram":
+                    result = value / 1000;
+                    break;
+                default:
+                    result = value;
+            }
+            break;
+        case "Celsius":
+            switch (toUnit) {
+                case "Fahrenheit":
+                    result = (value * 1.8) + 32;
+                    break;
+                case "Kelvin":
+                    result = value + 273.15;
+                    break;
+                default:
+                    result = value;
+            }
+            break;
+        case "Fahrenheit":
+            switch (toUnit) {
+                case "Celsius":
+                    result = (value - 32) / 1.8;
+                    break;
+                case "Kelvin":
+                    result = ((value - 32) / 1.8) + 273.15;
+                    break;
+                default:
+                    result = value;
+            }
+            break;
+        case "Kelvin":
+            switch (toUnit) {
+                case "Celsius":
+                    result = value - 273.15;
+                    break;
+                case "Fahrenheit":
+                    result = ((value - 273.15) * 1.8) + 32;
+                    break;
+                default:
+                    result = value;
+            }
+            break;
     }
+
+    textViewResult.setText(String.format("%.2f", result) + " " + toUnit);
+}
 }
